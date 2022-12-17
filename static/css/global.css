@@ -1,0 +1,17 @@
+body {
+    background-image: url("https://wallpapers.com/images/file/tour-de-france-on-mountain-side-urh9sphu09ley6g8.jpg");
+    background-size: cover;
+    background-position: center top;
+    background-repeat: no-repeat;
+}
+
+.navbar .navbar-nav {
+    flex-direction: row;
+    justify-content: flex-end;
+    background-color: transparent;
+    border: none;
+}
+
+#cyclistTable {
+    opacity: 1;
+}

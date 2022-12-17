@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CyclistTable</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="/static/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="../static/css/global.css">
+    <script src="../static/JavaScript/navbar.js"></script>
+</head>
+<body>
+<!-- HTML title -->
+<h1 class="text-center mt-3">Cyclist Board</h1>
+
+<!-- Navbar -->
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="#"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="jerseys.html">Jerseys</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="table.html">Table</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Input field -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10">
+            <input type="text" id="searchInput" placeholder="Search" class="form-control">
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<table class="table table-striped mx-auto w-50 bg-white rounded shadow" id="cyclistTable">
+    <thead>
+    <tr>
+        <th data-sort-reset="1" data-sort-restart="asc">First Name</th>
+        <th data-sort-reset="2" data-sort-restart="asc">Last Name</th>
+        <th data-sort-reset="3" data-sort-restart="asc">Date of Birth</th>
+        <th data-sort-reset="4" data-sort-restart="asc">Team</th>
+        <th data-sort-reset="5" data-sort-restart="asc">Country</th>
+        <th data-sort-reset="6" data-sort-restart="asc">Total Time</th>
+        <th data-sort-reset="7" data-sort-restart="asc">Mountain Points</th>
+        <th data-sort-reset="8" data-sort-restart="asc">Sprint Points</th>
+        <th >Edit</th>
+        <th >Delete</th>
+
+
+
+    </tr>
+    </thead>
+    <tbody id="cyclistTableBody"></tbody>
+</table>
+<br><br><br>
+<button type="button" class="btn btn-primary btn-lg btn-block mx-auto my-5" style="width: 200px;"
+        onclick="initEditCyclistModal('create')">Add a New Cyclist
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="editCyclistModal" tabindex="-1" role="dialog" aria-labelledby="editCyclistModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!-- Modal header will be updated based on context -->
+                <h5 class="modal-title" id="editCyclistModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Form to edit cyclist -->
+                <form>
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="Enter last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date of Birth</label>
+                        <input type="date" class="form-control" id="dateOfBirth">
+                    </div>
+                    <div class="form-group">
+                        <label for="totalTime">Total Time</label>
+                        <input type="number" class="form-control" id="totalTime">
+                    </div>
+                    <div class="form-group">
+                        <label for="mountainPoints">mountainPoints</label>
+                        <input type="number" class="form-control" id="mountainPoints">
+                    </div>
+                    <div class="form-group">
+                        <label for="sprintPoints">sprintPoints</label>
+                        <input type="number" class="form-control" id="sprintPoints">
+                    </div>
+                    <div class="form-group">
+                        <form>
+                            <label for="countryName">Choose a country:</label><br>
+                            <select id="countryName" name="countries">
+                            </select>
+                        </form>
+                    </div>
+                    <div class="form-group">
+                        <div class="form-group">
+                            <form>
+                                <label for="teamName">Choose a Team:</label><br>
+                                <select id="teamName" name="teamName">
+                                </select>
+                            </form>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer" id="modal-footer">
+                        <!-- Modal footer will be updated based on context -->
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="location.reload()">Close</button>
+                        <button type="button" class="btn btn-primary" id="modal-create" onclick="submit('Create')">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+
+
+</body>
+<!-- Include jQuery library -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.3/js/jquery.tablesorter.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../static/JavaScript/crudCyclist.js"></script>
+<!-- Include Bootstrap library -->
+
+</html>
